@@ -15,7 +15,7 @@ WEBDRIVER_PATH = "C:\chromedriver\chromedriver.exe"
 MAX_EPISODES = 3
 START_FROM = 1
 FILE = "file.txt"
-LINK = "https://gogoplay1.com/videos/spy-x-family-dub-episode"
+DEFAULT_LINK = "https://gogoplay1.com/videos/spy-x-family-dub-episode"
 DOWNLOAD_URLS_FILE = "download.txt"
 HTML_FILE = "index.html"
 WAIT_TIME = 60  # in seconds
@@ -27,10 +27,14 @@ QUAILTY = {
     "1080p": 3,
 }
 
+LINK = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_LINK
 # Get quality
-CURRENT_QUALITY = QUAILTY[sys.argv[1]] if len(sys.argv) > 1 else QUAILTY["720p"]
-if CURRENT_QUALITY not in QUAILTY.values():
+CURRENT_QUALITY = sys.argv[2] if len(sys.argv) > 2 else "720p"
+if CURRENT_QUALITY not in QUAILTY:
     raise Exception("Invalid quailty !")
+
+MAX_EPISODES = int(sys.argv[3]) if len(sys.argv) > 3 else MAX_EPISODES
+START_FROM = int(sys.argv[4]) if len(sys.argv) > 4 else START_FROM
 
 
 # Driver options
