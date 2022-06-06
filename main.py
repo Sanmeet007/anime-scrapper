@@ -60,7 +60,7 @@ scraper = cloudscraper.create_scraper()
 # Functions
 def parse_html():
     with open(FILE, "w+") as f:
-        for index, _ in enumerate(range(MAX_EPISODES), start=START_FROM):
+        for index, _ in enumerate(range(MAX_EPISODES), start=1):
             contents = scraper.get(f"{LINK}-{index}").text
             html = BeautifulSoup(markup=contents, features="lxml")
             iframe = html.select_one(selector="iframe")
