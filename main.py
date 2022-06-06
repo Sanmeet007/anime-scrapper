@@ -41,6 +41,9 @@ MAX_EPISODES = int(sys.argv[4]) if len(sys.argv) > 4 else MAX_EPISODES
 options = webdriver.ChromeOptions()
 prefs = {"download.default_directory": "H:\downloads"}
 options.add_experimental_option("prefs", prefs)
+options.add_argument("--window-size=1100,1000")
+options.add_experimental_option("excludeSwitches", ["enable-automation"])
+options.add_experimental_option("useAutomationExtension", False)
 
 
 #  Logger
@@ -130,6 +133,12 @@ def download_links():
 if __name__ == "__main__":
     parse_html()
     browser = webdriver.Chrome(service=Service(WEBDRIVER_PATH), options=options)
+    browser.execute_cdp_cmd(
+        "Network.setUserAgentOverride",
+        {
+            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.53 Safari/537.36"
+        },
+    )
     browser.get("http://www.google.com/")
     browser.find_element_by_tag_name("body").send_keys(Keys.COMMAND + "t")
     download_links()
