@@ -33,8 +33,8 @@ CURRENT_QUALITY = sys.argv[2] if len(sys.argv) > 2 else "720p"
 if CURRENT_QUALITY not in QUAILTY:
     raise Exception("Invalid quailty !")
 
-MAX_EPISODES = int(sys.argv[3]) if len(sys.argv) > 3 else MAX_EPISODES
-START_FROM = int(sys.argv[4]) if len(sys.argv) > 4 else START_FROM
+START_FROM = int(sys.argv[3]) if len(sys.argv) > 3 else START_FROM
+MAX_EPISODES = int(sys.argv[4]) if len(sys.argv) > 4 else MAX_EPISODES
 
 
 # Driver options
