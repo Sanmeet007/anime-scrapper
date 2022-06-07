@@ -26,6 +26,7 @@ QUAILTY = {
     "720p": 2,
     "1080p": 3,
 }
+SHOULD_PARSE = True
 
 LINK = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_LINK
 # Get quality
@@ -35,7 +36,7 @@ if CURRENT_QUALITY not in QUAILTY:
 
 START_FROM = int(sys.argv[3]) if len(sys.argv) > 3 else START_FROM
 MAX_EPISODES = int(sys.argv[4]) if len(sys.argv) > 4 else MAX_EPISODES
-
+SHOULD_PARSE = eval(sys.argv[5]) if len(sys.argv) > 5 else SHOULD_PARSE
 
 # Driver options
 options = webdriver.ChromeOptions()
@@ -131,7 +132,7 @@ def download_links():
 
 
 if __name__ == "__main__":
-    parse_html()
+    parse_html() if SHOULD_PARSE else None
     browser = webdriver.Chrome(service=Service(WEBDRIVER_PATH), options=options)
     browser.execute_cdp_cmd(
         "Network.setUserAgentOverride",
