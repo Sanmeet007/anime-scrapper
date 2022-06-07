@@ -19,7 +19,7 @@ DEFAULT_LINK = "https://gogoplay1.com/videos/spy-x-family-dub-episode"
 DOWNLOAD_URLS_FILE = "download.txt"
 HTML_FILE = "index.html"
 WAIT_TIME = 60  # in seconds
-LOAD_GUESS = 3  # in seconds
+LOAD_GUESS = 5  # in seconds
 QUAILTY = {
     "360p": 0,
     "480p": 1,
@@ -33,7 +33,9 @@ LINK = sys.argv[1] if len(sys.argv) > 1 else DEFAULT_LINK
 CURRENT_QUALITY = sys.argv[2] if len(sys.argv) > 2 else "720p"
 if CURRENT_QUALITY not in QUAILTY:
     raise Exception("Invalid quailty !")
-
+else:
+    CURRENT_QUALITY = QUAILTY[CURRENT_QUALITY]
+    
 START_FROM = int(sys.argv[3]) if len(sys.argv) > 3 else START_FROM
 MAX_EPISODES = int(sys.argv[4]) if len(sys.argv) > 4 else MAX_EPISODES
 SHOULD_PARSE = eval(sys.argv[5]) if len(sys.argv) > 5 else SHOULD_PARSE
@@ -42,9 +44,9 @@ SHOULD_PARSE = eval(sys.argv[5]) if len(sys.argv) > 5 else SHOULD_PARSE
 options = webdriver.ChromeOptions()
 prefs = {"download.default_directory": "H:\downloads"}
 options.add_experimental_option("prefs", prefs)
-options.add_argument("--window-size=1100,1000")
-options.add_experimental_option("excludeSwitches", ["enable-automation"])
-options.add_experimental_option("useAutomationExtension", False)
+# options.add_argument("--window-size=1100,1000")
+# options.add_experimental_option("excludeSwitches", ["enable-automation"])
+# options.add_experimental_option("useAutomationExtension", False)
 
 
 #  Logger
