@@ -35,7 +35,7 @@ if CURRENT_QUALITY not in QUAILTY:
     raise Exception("Invalid quailty !")
 else:
     CURRENT_QUALITY = QUAILTY[CURRENT_QUALITY]
-    
+
 START_FROM = int(sys.argv[3]) if len(sys.argv) > 3 else START_FROM
 MAX_EPISODES = int(sys.argv[4]) if len(sys.argv) > 4 else MAX_EPISODES
 SHOULD_PARSE = eval(sys.argv[5]) if len(sys.argv) > 5 else SHOULD_PARSE
@@ -143,5 +143,5 @@ if __name__ == "__main__":
         },
     )
     browser.get("http://www.google.com/")
-    browser.find_element_by_tag_name("body").send_keys(Keys.COMMAND + "t")
+    browser.find_element(by=By.TAG_NAME, value="body").send_keys(Keys.COMMAND + "t")
     download_links()
