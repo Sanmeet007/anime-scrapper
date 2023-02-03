@@ -20,7 +20,7 @@ if __name__ == "__main__":
             "quality",
             "start",
             "max",
-            "download_dir",
+            "downloads_dir",
         ]
     ).todict()
 
