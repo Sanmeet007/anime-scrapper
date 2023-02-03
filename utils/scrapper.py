@@ -138,7 +138,7 @@ class AnimeScrapper:
             if self.__degbugging:
                 self.__logger.error(E)
 
-            print(AnimeScrapper.coloredinfo("*Process exited due to an error."))
+            print(AnimeScrapper.colorederror("*Process exited due to an error."))
             sys.exit()
 
     def __getwdopts(self):
