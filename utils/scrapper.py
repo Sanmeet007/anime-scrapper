@@ -224,10 +224,14 @@ class AnimeScrapper:
                 self.__dlinks.append(link.get_attribute("href"))
 
             except Exception as E:
-                print("[ERROR]\tError downloading episode - %s" % (vlink))
+                print(
+                    AnimeScrapper.colorederror(
+                        "Error downloading episode - %s" % (vlink)
+                    )
+                )
 
                 if self.__degbugging:
-                    print("[DEBUG]\tPlease check log for details !")
+                    print(AnimeScrapper.coloredinfo("Please check log for details !"))
                     self.__logger.error(E)
 
         if self.__degbugging:
