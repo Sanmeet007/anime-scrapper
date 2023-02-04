@@ -80,14 +80,14 @@ You need to run these following commands which are basically flags .
 - `link` : Used to replace the original `ANIME_DOWNLOAD_LINK` if present in .env file with the param passed in cli.
 - `start` : Sets the episode from which the loop starts.
 - `max` : Sets the maximum episodes to download . Basically helps in creating a range from start till start + max
-- `parser` : If parser is set to true then all the links present in `DOWNLOAD_LINK_FILE` are visited and hence downloading is processed without parsing. If false then the normal downloading happens. ( By default false )
+
 
 ##### Usage
 
 Without shorthand args
 
 ```bash
-py main.py --link="https://playgo1.cc/videos/gintama-episode" --quality="720p" --start=1 --max=10 --parser=false --downloads_dir="C:/User/Downloads"
+py main.py --link="https://playgo1.cc/videos/gintama-episode" --quality="720p" --start=1 --max=10 --downloads_dir="C:/User/Downloads"
 ```
 
 With shorthand args
