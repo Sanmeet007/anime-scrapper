@@ -207,20 +207,20 @@ class AnimeScrapper:
             self.browser.get(vlink)
             try:
                 time.sleep(AnimeScrapper.LOAD_GUESS)
-                element = WebDriverWait(self.browser, AnimeScrapper.WAIT_TIME).until(
-                    EC.presence_of_element_located((By.ID, "content-download"))
+
+                self.browser.execute_script(
+                    """return document.querySelector("#content-download").querySelectorAll(".mirror_link > .dowload a")[%s].click()
+                """
+                    % self.QUAILTY
                 )
-                mirror_links_one = element.find_elements(
-                    by=By.CLASS_NAME, value="mirror_link"
-                )[0]
-                download_links = mirror_links_one.find_elements(
-                    by=By.CLASS_NAME, value="dowload"
+
+                link = self.browser.execute_script(
+                    """return document.querySelector("#content-download").querySelectorAll(".mirror_link > .dowload a")[%s].href
+                """
+                    % self.QUAILTY
                 )
-                link = download_links[self.QUAILTY].find_element(
-                    by=By.TAG_NAME, value="a"
-                )
-                link.click()
-                self.__dlinks.append(link.get_attribute("href"))
+
+                self.__dlinks.append(link)
 
             except Exception as E:
                 print(
