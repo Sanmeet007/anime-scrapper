@@ -88,12 +88,16 @@ class AnimeScrapper:
         return colorama.Fore.BLUE + f"{'[INFO]':9}" + colorama.Fore.RESET + string
 
     @staticmethod
-    def colorederror(string: str):
-        return colorama.Fore.RED + f"{'[ERROR]':9}" + colorama.Fore.RESET + string
+    def colorederror(string: str, level: str = "ERROR"):
+        level = "[" + level
+        level += "]"
+        return colorama.Fore.RED + f"{level:9}" + colorama.Fore.RESET + string
 
     @staticmethod
-    def coloredsuccess(string: str):
-        return colorama.Fore.GREEN + f"{'[DONE]':9}" + colorama.Fore.RESET + string
+    def coloredsuccess(string: str, level: str = "DONE"):
+        level = "[" + level
+        level += "]"
+        return colorama.Fore.GREEN + f"{level:9}" + colorama.Fore.RESET + string
 
     @staticmethod
     def coloredgrey(string: str):
@@ -110,6 +114,7 @@ class AnimeScrapper:
 
             # Opening browser
             self.browser = webdriver.Chrome(
+                service_log_path=None,
                 service=Service(self.__wdpath),
                 options=self.__getwdopts(),
             )
@@ -130,7 +135,7 @@ class AnimeScrapper:
         except KeyboardInterrupt:
             if self.bar:
                 self.bar.close()
-            print(AnimeScrapper.coloredgrey("\n************************************"))
+            print(AnimeScrapper.coloredgrey("\n**************************************"))
             print(AnimeScrapper.coloredinfo("Ending process"))
             sys.exit()
 
@@ -145,7 +150,9 @@ class AnimeScrapper:
         options = webdriver.ChromeOptions()
         prefs = {"download.default_directory": self.__download_folder}
         options.add_experimental_option("prefs", prefs)
-        options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        options.add_experimental_option(
+            "excludeSwitches", ["enable-automation", "enable-logging"]
+        )
         options.add_experimental_option("useAutomationExtension", False)
         return options
 
@@ -183,7 +190,9 @@ class AnimeScrapper:
 
             self.bar.close()
             print(AnimeScrapper.coloredsuccess("Links parsed successfully"))
-            print(AnimeScrapper.coloredgrey("\n************************************"))
+            print(
+                AnimeScrapper.coloredgrey("\n***********  DOWNLOADING  ************\n")
+            )
 
             if self.__degbugging:
                 with open(AnimeScrapper.VLINKS_FILE, "w") as f:
@@ -221,6 +230,7 @@ class AnimeScrapper:
                 )
 
                 self.__dlinks.append(link)
+                print(AnimeScrapper.coloredsuccess("Downloading - %s" % (vlink)))
 
             except Exception as E:
                 print(
@@ -245,5 +255,5 @@ class AnimeScrapper:
         )
 
         # An infinte loop to keep the window opened
-        while True:
+        while 1:
             pass
