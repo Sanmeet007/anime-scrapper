@@ -68,8 +68,6 @@ Sample of a .env file :
 WEBDRIVER_PATH = "C:\chromedriver\chromedriver.exe"
 DOWNLOAD_DIRECTORY = "D:\Anime\One-Piece"
 ANIME_DOWNLOAD_LINK = "https://playgo1.cc/videos/one-piece-dub-episode"
-DOWNLOAD_URLS_FILE = "download_links.txt"
-VISITING_URLS_FILE = "visiting_links.txt"
 DOWNLOAD_QUALITY = "720p"
 ```
 
