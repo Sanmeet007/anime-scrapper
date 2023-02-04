@@ -12,8 +12,6 @@ Sample usage :
 py main.py --link="LINK" --quality="QUALITY" --start="START" --max="MAX"
 ```
 
-NOTE : Current chrome supported version for dist 107.0.5304.107
-
 ## Quick Setup
 
 Before you begin to automate your favourite anime downloading you need to install the required dependencies.
@@ -91,7 +89,7 @@ You need to run these following commands which are basically flags .
 Without shorthand args
 
 ```bash
-py main.py --link="https://gogoplay1.com/videos/gintama-episode" --quality="720p" --start=1 --max=10 --parser=false --downloads_dir="C:/User/Downloads"
+py main.py --link="https://playgo1.cc/videos/gintama-episode" --quality="720p" --start=1 --max=10 --parser=false --downloads_dir="C:/User/Downloads"
 ```
 
 With shorthand args
