@@ -191,7 +191,6 @@ class AnimeScrapper:
 
         except Exception as E:
             self.bar.close()
-            print(E)
             print(AnimeScrapper.colorederror("Parser Error :"))
             print(
                 AnimeScrapper.coloredgrey(
