@@ -1,4 +1,5 @@
 import getopt, sys
+import utils.version as version
 
 
 class CliArguments:
@@ -12,6 +13,10 @@ class CliArguments:
         cli_opts = {}
 
         try:
+            if "--version" in sys.argv:
+                print(version.getversion())
+                sys.exit()
+
             cli_args = getopt.getopt(
                 sys.argv[1:],
                 shortopts=self.SHORT_OPTS,
@@ -20,6 +25,7 @@ class CliArguments:
 
         except getopt.GetoptError as cli_parse_err:
             print("InvalidOptionError : ", str(cli_parse_err))
+            sys.exit()
 
         else:
             cli_opts = dict(cli_args[0])
