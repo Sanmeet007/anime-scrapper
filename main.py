@@ -7,7 +7,7 @@ from utils.cli import CliArguments
 load_dotenv()
 
 LINK = os.environ.get(
-    "ANIME_DOWNLOAD_LINK", "https://gogo-play.tv/videos/one-piece-episode"
+    "ANIME_DOWNLOAD_LINK", "https://playgo1.cc/videos/one-piece-dub-episode"
 )
 WDPATH = os.environ.get("WEBDRIVER_PATH", "./chromediver.exe")
 QUALITY = os.environ.get("DOWNLOAD_QUALITY", EpisodeQuality.low)
