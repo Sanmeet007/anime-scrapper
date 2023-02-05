@@ -150,9 +150,13 @@ class AnimeScrapper:
         options = webdriver.ChromeOptions()
         prefs = {"download.default_directory": self.__download_folder}
         options.add_experimental_option("prefs", prefs)
-        options.add_experimental_option(
-            "excludeSwitches", ["enable-automation", "enable-logging"]
-        )
+        if self.__degbugging:
+            options.add_experimental_option("excludeSwitches", ["enable-automation"])
+        else:
+            options.add_experimental_option(
+                "excludeSwitches", ["enable-automation", "enable-logging"]
+            )
+
         options.add_experimental_option("useAutomationExtension", False)
         return options
 
