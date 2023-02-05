@@ -21,6 +21,7 @@ if __name__ == "__main__":
             "start",
             "max",
             "downloads_dir",
+            "verbose",
         ]
     ).todict()
 
@@ -32,6 +33,7 @@ if __name__ == "__main__":
         link=cli_args.get("link", LINK),
         start_from=cli_args.get("start", 1),
         max_eps=cli_args.get("max", 1),
+        verbose=cli_args.get("verbose", False),
     )
 
     # Starting porcess

@@ -36,7 +36,6 @@ class AnimeScrapper:
 
     def __init__(
         self,
-        debug: bool = False,
         wdpath: str = None,
         max_eps: int = 1,
         start_from: int = 1,
@@ -44,18 +43,19 @@ class AnimeScrapper:
         link: str = "",
         logfile: str = "anime_scrapper.log",
         download_folder=None,
+        verbose=False,
     ) -> None:
         """_summary_
 
         Args:
-            debug (bool, optional): _description_. Defaults to False.
             wdpath (str, optional): _description_. Defaults to None.
             max_eps (int, optional): _description_. Defaults to 1.
             start_from (int, optional): _description_. Defaults to 1.
             quality (str, optional): _description_. Defaults to "480p".
             link (str, optional): _description_. Defaults to "".
             logfile (str, optional): _description_. Defaults to "anime_scrapper.log".
-            download_folder (_type_, optional): _description_. Defaults to None.
+            download_folder (str, optional): _description_. Defaults to None.
+            verbose (bool, optional): _description_. Defaults to False.
         """
 
         if quality not in AnimeScrapper.AVAILABLE_QUALITIES:
@@ -67,7 +67,7 @@ class AnimeScrapper:
         self.MAX_EPISODES = max_eps
         self.START_FROM = start_from
         self.QUAILTY = AnimeScrapper.AVAILABLE_QUALITIES[quality]
-        self.__degbugging = debug
+        self.__degbugging = verbose
         self.__wdpath = wdpath
         self.__download_folder = download_folder
         self.bar = None
@@ -76,7 +76,11 @@ class AnimeScrapper:
         self.__vlinks, self.__dlinks = [], []
 
         # Enabling debugger
-        if debug == True:
+        if self.__degbugging == True:
+            print(AnimeScrapper.coloredgrey("------------------------"))
+            print(AnimeScrapper.coloredgrey("| Enabled Debugging mode |"))
+            print(AnimeScrapper.coloredgrey("------------------------"))
+            print("")
             self.__enable_debugger(logfile=logfile)
 
     def init(self) -> None:
