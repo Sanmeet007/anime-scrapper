@@ -118,7 +118,6 @@ class AnimeScrapper:
 
             # Opening browser
             self.browser = webdriver.Chrome(
-                service_log_path=None,
                 service=Service(self.__wdpath),
                 options=self.__getwdopts(),
             )
@@ -144,6 +143,7 @@ class AnimeScrapper:
             sys.exit()
 
         except Exception as E:
+            print(E)
             if self.__degbugging:
                 self.__logger.error(E)
 
