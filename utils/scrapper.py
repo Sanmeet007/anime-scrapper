@@ -207,14 +207,23 @@ class AnimeScrapper:
 
         except Exception as E:
             self.bar.close()
-            print(AnimeScrapper.colorederror("Parser Error :"))
-            print(
-                AnimeScrapper.coloredgrey(
-                    f"{'':9}An error occured while parsing !\n"
-                    f"{'':9}It might be due to unstable internet connection.\n"
-                    f"{'':9}You may try using vpn in case error persits."
+
+            if self.__degbugging : 
+                print(AnimeScrapper.colorederror("Parser Error :"))
+                print(
+                    AnimeScrapper.coloredgrey(
+                        f"{'':9}{E}\n"
+                    )
                 )
-            )
+            else : 
+                print(AnimeScrapper.colorederror("Parser Error :"))
+                print(
+                    AnimeScrapper.coloredgrey(
+                        f"{'':9}An error occured while parsing !\n"
+                        f"{'':9}It might be due to unstable internet connection.\n"
+                        f"{'':9}You may try using vpn in case error persits."
+                    )
+                )
             print("")
             sys.exit()
 

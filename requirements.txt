@@ -5,6 +5,7 @@ bs4==0.0.1
 certifi==2022.9.14
 cffi==1.15.1
 charset-normalizer==2.1.1
+cliopts==1.2.0
 cloudscraper==1.2.64
 h11==0.13.0
 idna==3.4

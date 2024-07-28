@@ -1,2 +1,2 @@
-def getversion() -> str:
-    return "Anime Scrapper 1.1.0"
+def get_version_name() -> str:
+    return "1.2.0"
