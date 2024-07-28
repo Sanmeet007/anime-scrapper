@@ -143,7 +143,6 @@ class AnimeScrapper:
             sys.exit()
 
         except Exception as E:
-            print(E)
             if self.__degbugging:
                 self.__logger.error(E)
 
