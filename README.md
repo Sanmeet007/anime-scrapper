@@ -28,6 +28,7 @@ The first step would be to clone the repo.
   - Cloudscrapper : For getting html.
   - BeautifulSoup : Used for scrapping.
   - Python Dotenv : For loading env.
+  - Cliopts : For parsing cli argurments.
 
 Chrome diver download link : [Official download link](https://chromedriver.chromium.org/downloads)
 
@@ -58,7 +59,7 @@ Environment vars :
 - `ANIME_DOWNLOAD_LINK` : Sets the anime download link.
 - `DOWNLOAD_QUALITY` : Sets the quality.
 
-> You need to get the link for `ANIME_DOWNLOAD_LINK` from the `gogo-play.tv` website in an exact pattern like : <https://playgo1.cc/videos/one-piece-dub-episode>
+> You need to get the link for `ANIME_DOWNLOAD_LINK` from the `embtaku.pro` ( former gogo-play.tv) website in an exact pattern like : <https://embtaku.pro/videos/one-piece-episode>
 
 > Accepted values for `DOWNLOAD_QUALITY` are 420p , 720p, 360p & 1080p.
 
@@ -67,7 +68,7 @@ Sample of a .env file :
 ```.env
 WEBDRIVER_PATH = "C:\chromedriver\chromedriver.exe"
 DOWNLOAD_DIRECTORY = "D:\Anime\One-Piece"
-ANIME_DOWNLOAD_LINK = "https://playgo1.cc/videos/one-piece-dub-episode"
+ANIME_DOWNLOAD_LINK = "https://embtaku.pro/videos/one-piece-episode"
 DOWNLOAD_QUALITY = "720p"
 ```
 
@@ -87,7 +88,7 @@ You need to run these following commands which are basically flags .
 Without shorthand args
 
 ```bash
-py main.py --link="https://playgo1.cc/videos/gintama-episode" --quality="720p" --start=1 --max=10 --downloads_dir="C:/User/Downloads"
+py main.py --link="https://embtaku.pro/videos/gintama-episode" --quality="720p" --start=1 --max=10 --downloads_dir="C:/User/Downloads"
 ```
 
 With shorthand args
